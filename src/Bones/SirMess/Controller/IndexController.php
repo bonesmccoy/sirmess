@@ -6,6 +6,8 @@ namespace Bones\SirMess\Controller;
 
 use Silex\Application;
 use Silex\ControllerProviderInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 class IndexController implements ControllerProviderInterface
 {
@@ -28,6 +30,11 @@ class IndexController implements ControllerProviderInterface
     public function index(Application $app)
     {
 
-
+        return new JsonResponse(
+            array(
+                'message' => 'Welcome To SirMess',
+                'version' => '0.1'
+            )
+        );
     }
 }
