@@ -4,6 +4,8 @@
 namespace Bones\SirMess\Controller;
 
 
+use Bones\SirMess\Model\User;
+use FOS\Message\Repository as ConversationRepository;
 use Silex\Application;
 use Silex\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -23,6 +25,10 @@ class IndexController implements ControllerProviderInterface
             'Bones\SirMess\Controller\IndexController::index'
         );
 
+        $factory->get('/inbox/{userId}',
+            'Bones\SirMess\Controller\IndexController::getInbox'
+        );
+
         return $factory;
     }
 
@@ -37,4 +43,22 @@ class IndexController implements ControllerProviderInterface
             )
         );
     }
+
+    public function getInbox(Application $app, $userId)
+    {
+
+        $user = new User($userId);
+
+        $doctrine = $app['doctrine'];
+        $repository = new ConversationRepository($doctrine);
+
+        $conversations = $repository->getPersonConversations($user);
+        var_dump($conversations);
+        die;
+        return new JsonResponse(
+            $conversations
+        );
+    }
+
+
 }

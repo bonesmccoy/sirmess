@@ -4,7 +4,8 @@
     "friendsofsymfony/message" : "1.0.x-dev",
     "symfony/yaml" : "~2.1",
     "symfony/serializer": "~2.3",
-    "igorw/config-service-provider": "dev-master"
+    "igorw/config-service-provider": "dev-master",
+    "doctrine/orm" : "2.4"
   },
   "autoload": {"psr-0": {"": "src"}}
 }
