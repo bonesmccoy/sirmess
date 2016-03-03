@@ -13,16 +13,13 @@ class Message
 
     protected $body;
 
+    /** @var User  */
     protected $sender;
 
-
-    public function __construct(User $sender, $title, $body)
-    {
-
-        $this->sender = $sender;
-        $this->title = $title;
-        $this->body = $body;
-    }
+    /**
+     * @var DateTime
+     */
+    private $date;
 
     /**
      * @var User[]
@@ -33,6 +30,16 @@ class Message
      * @var User[]
      */
     protected $readers = array();
+
+
+    public function __construct(User $sender, $title, $body, \DateTime $date)
+    {
+        $this->sender = $sender;
+        $this->title = $title;
+        $this->body = $body;
+        $this->date = $date;
+    }
+
 
     /**
      * @return mixed
@@ -57,6 +64,16 @@ class Message
     {
         return $this->body;
     }
+
+    /**
+     * @return DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+
 
     /**
      * @return mixed

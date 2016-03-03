@@ -3,6 +3,7 @@
 namespace spec\Bones\SirMess\Model;
 
 use Bones\SirMess\Model\User;
+use Faker\Provider\cs_CZ\DateTime;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -11,13 +12,19 @@ class MessageSpec extends ObjectBehavior
     function let(User $user)
     {
         $user->beADoubleOf('Bones\SirMess\Model\User');
-        $this->beConstructedWith($user, 'title', 'body');
+        $date = new \DateTime();
+        $this->beConstructedWith($user, 'title', 'body', $date);
 
     }
 
     function it_is_initializable()
     {
         $this->shouldHaveType('Bones\SirMess\Model\Message');
+    }
+
+    function it_has_a_date()
+    {
+        $this->getDate()->shouldReturnAnInstanceOf('\DateTime');
     }
 
     function it_should_add_recipient()
