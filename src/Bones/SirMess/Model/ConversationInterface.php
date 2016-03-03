@@ -11,7 +11,7 @@ interface ConversationInterface
     public function getId();
 
     /** @return User[] */
-    public function getUsers();
+    public function getUserList();
 
     /** @return Message[] */
     public function getMessageList();

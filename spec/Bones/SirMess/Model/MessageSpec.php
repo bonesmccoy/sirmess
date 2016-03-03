@@ -13,7 +13,7 @@ class MessageSpec extends ObjectBehavior
     {
         $user->beADoubleOf('Bones\SirMess\Model\User');
         $date = new \DateTime();
-        $conversation->beADoubleOf('Bones\SirMess\Model\ConversationInterface');
+        $conversation->beADoubleOf('Bones\SirMess\Model\Conversation');
         $this->beConstructedWith($conversation, $user, 'body');
 
     }

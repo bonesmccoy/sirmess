@@ -45,10 +45,10 @@ class Message
      */
     public function __construct(Conversation $conversation, User $sender, $body)
     {
+        $this->conversation = $conversation;
         $this->sender = $sender;
         $this->body = $body;
         $this->date = new \DateTime();
-        $this->conversation = $conversation;
     }
 
 
@@ -87,7 +87,7 @@ class Message
 
 
     /**
-     * @return mixed
+     * @return User
      */
     public function getSender()
     {
