@@ -15,7 +15,6 @@ class MessageSpec extends ObjectBehavior
 
     }
 
-
     function it_is_initializable()
     {
         $this->shouldHaveType('Bones\SirMess\Model\Message');
@@ -65,7 +64,6 @@ class MessageSpec extends ObjectBehavior
         $this->markAsReadFromUser($user);
         $this->getReaders()->shouldHaveCount(1);
     }
-
 
 
 
