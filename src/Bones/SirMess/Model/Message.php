@@ -66,7 +66,7 @@ class Message
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getDate()
     {
