@@ -5,8 +5,8 @@
         "symfony/yaml": "~2.1",
         "symfony/serializer": "~2.3",
         "igorw/config-service-provider": "dev-master",
-        "doctrine/orm": "2.4",
-        "dflydev/doctrine-orm-service-provider": "1.*"
+        "monolog/monolog" : "1.18.0",
+        "moriony/silex-mongo-provider": "*"
     },
     "autoload": {
         "psr-0": {

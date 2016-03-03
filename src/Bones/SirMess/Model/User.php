@@ -4,9 +4,7 @@
 namespace Bones\SirMess\Model;
 
 
-use FOS\Message\Model\PersonInterface;
-
-class User implements PersonInterface
+class User
 {
 
     /**
@@ -24,6 +22,6 @@ class User implements PersonInterface
 
     public function getId()
     {
-        return $this->getId();
+        return $this->id;
     }
 }
