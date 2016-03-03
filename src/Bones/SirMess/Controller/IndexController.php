@@ -5,13 +5,10 @@ namespace Bones\SirMess\Controller;
 
 
 use Bones\SirMess\Model\User;
-use Doctrine\ORM\EntityManager;
-use FOS\Message\Driver\Doctrine\ORM\DoctrineORMDriver;
-use FOS\Message\Repository as ConversationRepository;
-use FOS\Message\Repository;
 use Silex\Application;
 use Silex\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class IndexController implements ControllerProviderInterface
@@ -51,9 +48,10 @@ class IndexController implements ControllerProviderInterface
     {
 
         $user = new User($userId);
-        return new JsonResponse(
-            $user
-        );
+
+        $jsonResponse = $app['serializer']->serialize($user, 'json');
+
+        return new Response($jsonResponse, 200, array('Content-Type' => 'application/json'));
     }
 
 
