@@ -8,6 +8,12 @@
         "monolog/monolog" : "1.18.0",
         "moriony/silex-mongo-provider": "*"
     },
+    "require-dev": {
+      "phpspec/phpspec": "~2.0"
+    },
+    "config": {
+      "bin-dir": "bin"
+    },
     "autoload": {
         "psr-0": {
             "": "src"
