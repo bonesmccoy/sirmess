@@ -5,6 +5,7 @@ namespace Bones\SirMess\Controller;
 
 
 use Bones\SirMess\Model\User;
+use Doctrine\ORM\EntityManager;
 use FOS\Message\Repository as ConversationRepository;
 use Silex\Application;
 use Silex\ControllerProviderInterface;
@@ -48,15 +49,11 @@ class IndexController implements ControllerProviderInterface
     {
 
         $user = new User($userId);
-
-        $doctrine = $app['doctrine'];
-        $repository = new ConversationRepository($doctrine);
-
-        $conversations = $repository->getPersonConversations($user);
-        var_dump($conversations);
-        die;
+        /** @var EntityManager $em */
+        $em = $app['orm.em'];
+        var_dump($em->getRepository('FOS\Message\Driver\Doctrine\ORM\Entity\ConversationPerson'));
         return new JsonResponse(
-            $conversations
+            1
         );
     }
 
