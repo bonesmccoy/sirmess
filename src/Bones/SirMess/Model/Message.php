@@ -95,7 +95,24 @@ class Message
         if (isset($this->recipients[$user->getId()]) &&
             !isset($this->readers[$user->getId()])
         ) {
-            $this->readers[$user->getId()] = $user;
+            $this->readers[$user->getId()] = new \DateTime();
+        }
+    }
+
+    public function isReadFromUser(User $user)
+    {
+        return (isset($this->readers[$user->getId()]));
+    }
+
+    public function getReadDateForUser(User $user)
+    {
+        return  $this->isReadFromUser($user)? $this->readers[$user->getId()] : null;
+    }
+
+    public function markAsUnreadForUser(User $user)
+    {
+        if (isset($this->readers[$user->getId()])) {
+            unset($this->readers[$user->getId()]);
         }
     }
 

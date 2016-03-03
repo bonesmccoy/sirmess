@@ -65,6 +65,27 @@ class MessageSpec extends ObjectBehavior
         $this->getReaders()->shouldHaveCount(1);
     }
 
+    function it_can_have_read_date_for_a_given_user()
+    {
+        $user = new User(3);
+        $this->addRecipient($user);
+        $this->markAsReadFromUser($user);
+        $this->getReaders()->shouldHaveCount(1);
+
+        $this->getReadDateForUser($user);
+    }
+
+    function it_can_be_set_unread_for_a_give_user()
+    {
+        $user = new User(3);
+        $this->addRecipient($user);
+        $this->markAsReadFromUser($user);
+        $this->getReaders()->shouldHaveCount(1);
+
+        $this->markAsUnreadForUser($user);
+        $this->getReaders()->shouldHaveCount(0);
+    }
+
 
 
 }
