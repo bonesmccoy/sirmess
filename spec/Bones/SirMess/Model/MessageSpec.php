@@ -2,18 +2,19 @@
 
 namespace spec\Bones\SirMess\Model;
 
+use Bones\SirMess\Model\ConversationInterface;
 use Bones\SirMess\Model\User;
-use Faker\Provider\cs_CZ\DateTime;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class MessageSpec extends ObjectBehavior
 {
-    function let(User $user)
+    function let(User $user, ConversationInterface $conversation)
     {
         $user->beADoubleOf('Bones\SirMess\Model\User');
         $date = new \DateTime();
-        $this->beConstructedWith($user, 'title', 'body', $date);
+        $conversation->beADoubleOf('Bones\SirMess\Model\ConversationInterface');
+        $this->beConstructedWith($conversation, $user, 'body');
 
     }
 

@@ -7,7 +7,7 @@ namespace Bones\SirMess\Model;
 class Message
 {
 
-    protected $_id;
+    protected $id;
 
     protected $title;
 
@@ -17,7 +17,7 @@ class Message
     protected $sender;
 
     /**
-     * @var DateTime
+     * @var \DateTime
      */
     private $date;
 
@@ -31,13 +31,24 @@ class Message
      */
     protected $readers = array();
 
+    /**
+     * @var Conversation
+     */
+    private $conversation;
 
-    public function __construct(User $sender, $title, $body, \DateTime $date)
+
+    /**
+     * Message constructor.
+     * @param Conversation $conversation
+     * @param User $sender
+     * @param $body
+     */
+    public function __construct(Conversation $conversation, User $sender, $body)
     {
         $this->sender = $sender;
-        $this->title = $title;
         $this->body = $body;
-        $this->date = $date;
+        $this->date = new \DateTime();
+        $this->conversation = $conversation;
     }
 
 
@@ -46,7 +57,7 @@ class Message
      */
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
     }
 
     /**
