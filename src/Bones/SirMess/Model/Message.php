@@ -13,7 +13,7 @@ class Message
 
     protected $body;
 
-    /** @var User  */
+    /** @var Person  */
     protected $sender;
 
     /**
@@ -22,12 +22,12 @@ class Message
     private $date;
 
     /**
-     * @var User[]
+     * @var Person[]
      */
     protected $recipients = array();
 
     /**
-     * @var User[]
+     * @var Person[]
      */
     protected $readers = array();
 
@@ -40,10 +40,10 @@ class Message
     /**
      * Message constructor.
      * @param Conversation $conversation
-     * @param User $sender
+     * @param Person $sender
      * @param $body
      */
-    public function __construct(Conversation $conversation, User $sender, $body)
+    public function __construct(Conversation $conversation, Person $sender, $body)
     {
         $this->conversation = $conversation;
         $this->sender = $sender;
@@ -87,7 +87,7 @@ class Message
 
 
     /**
-     * @return User
+     * @return Person
      */
     public function getSender()
     {
@@ -95,7 +95,7 @@ class Message
     }
 
     /**
-     * @return User[]
+     * @return Person[]
      */
     public function getRecipients()
     {
@@ -103,14 +103,14 @@ class Message
     }
 
 
-    public function addRecipient(User $user)
+    public function addRecipient(Person $user)
     {
         $this->recipients[$user->getId()] = $user;
     }
 
 
     /**
-     * @return User[]
+     * @return Person[]
      */
     public function getReaders()
     {
@@ -118,7 +118,7 @@ class Message
     }
 
 
-    public function markAsReadFromUser(User $user)
+    public function markAsReadForPerson(Person $user)
     {
         if (isset($this->recipients[$user->getId()]) &&
             !isset($this->readers[$user->getId()])
@@ -127,17 +127,17 @@ class Message
         }
     }
 
-    public function isReadFromUser(User $user)
+    public function isReadFromPerson(Person $user)
     {
         return (isset($this->readers[$user->getId()]));
     }
 
-    public function getReadDateForUser(User $user)
+    public function getReadDateForUser(Person $user)
     {
-        return  $this->isReadFromUser($user)? $this->readers[$user->getId()] : null;
+        return  $this->isReadFromPerson($user)? $this->readers[$user->getId()] : null;
     }
 
-    public function markAsUnreadForUser(User $user)
+    public function markAsUnreadForPerson(Person $user)
     {
         if (isset($this->readers[$user->getId()])) {
             unset($this->readers[$user->getId()]);

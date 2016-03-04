@@ -10,9 +10,9 @@ class Conversation implements ConversationInterface
     protected $messageList = array();
 
     /**
-     * @var User[]
+     * @var Person[]
      */
-    protected $userList = array();
+    protected $personList = array();
 
     /** @return string */
     public function getId()
@@ -20,10 +20,10 @@ class Conversation implements ConversationInterface
         // TODO: Implement getId() method.
     }
 
-    /** @return User[] */
-    public function getUserList()
+    /** @return Person[] */
+    public function getPersonList()
     {
-        return $this->userList;
+        return $this->personList;
     }
 
     /** @return Message[] */
@@ -38,26 +38,26 @@ class Conversation implements ConversationInterface
     public function addMessage(Message $message)
     {
         $this->messageList[$message->getDate()->format("Ymdhist")] = $message;
-        $this->addUsersFromMessage($message);
+        $this->addPersonFromMessage($message);
 
      }
 
-    private function addUsersFromMessage(Message $message)
+    private function addPersonFromMessage(Message $message)
     {
         $sender = $message->getSender();
-        $this->addUserIfNotExists($sender);
+        $this->addPersonIfNotExists($sender);
         foreach($message->getRecipients() as $recipient) {
-            $this->addUserIfNotExists($recipient);
+            $this->addPersonIfNotExists($recipient);
         }
     }
 
     /**
-     * @param User $user
+     * @param Person $user
      */
-    private function addUserIfNotExists(User $user)
+    private function addPersonIfNotExists(Person $user)
     {
-        if (!isset($this->userList[$user->getId()])) {
-            $this->userList[$user->getId()] = $user;
+        if (!isset($this->personList[$user->getId()])) {
+            $this->personList[$user->getId()] = $user;
         }
     }
 }

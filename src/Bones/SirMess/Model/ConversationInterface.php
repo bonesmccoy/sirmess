@@ -10,8 +10,8 @@ interface ConversationInterface
     /** @return string */
     public function getId();
 
-    /** @return User[] */
-    public function getUserList();
+    /** @return Person[] */
+    public function getPersonList();
 
     /** @return Message[] */
     public function getMessageList();

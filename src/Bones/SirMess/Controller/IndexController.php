@@ -4,7 +4,7 @@
 namespace Bones\SirMess\Controller;
 
 
-use Bones\SirMess\Model\User;
+use Bones\SirMess\Model\Person;
 use Silex\Application;
 use Silex\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -47,7 +47,7 @@ class IndexController implements ControllerProviderInterface
     public function getInbox(Application $app, $userId)
     {
 
-        $user = new User($userId);
+        $user = new Person($userId);
 
         $jsonResponse = $app['serializer']->serialize($user, 'json');
 

@@ -4,7 +4,7 @@
 namespace Bones\SirMess\Model;
 
 
-class User
+class Person
 {
 
     /**
