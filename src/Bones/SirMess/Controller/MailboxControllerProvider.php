@@ -2,7 +2,6 @@
 
 namespace Bones\SirMess\Controller;
 
-use Bones\Message\Mailbox;
 use Bones\Message\Model\Person;
 use Silex\Application;
 use Silex\ControllerCollection;
@@ -10,7 +9,7 @@ use Silex\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class IndexControllerProvider implements ControllerProviderInterface
+class MailboxControllerProvider implements ControllerProviderInterface
 {
 
     public function connect(Application $app)

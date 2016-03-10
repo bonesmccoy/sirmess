@@ -1,12 +1,10 @@
 config:
   debug: true
   db:
-    name: 'messages_test'
+    name: 'primes-test'
     driver: pdo_mysql
     host: 127.0.0.1
     user: ''
     password: ''
     #path: Only relevant for pdo_sqlite, specifies the path to the SQLite database.
     #port: Only relevant for pdo_mysql, pdo_pgsql, and pdo_oci/oci8, specifies the port of the database to connect to.
-
-
