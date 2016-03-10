@@ -13,16 +13,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bonesmccoy/messages.git",
-                "reference": "f8a9a850c0a599431055d12b65c5eadb5f88369b"
+                "reference": "9224dad9fdb939664beb602da1630f06cde7bd86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bonesmccoy/messages/zipball/f8a9a850c0a599431055d12b65c5eadb5f88369b",
-                "reference": "f8a9a850c0a599431055d12b65c5eadb5f88369b",
+                "url": "https://api.github.com/repos/bonesmccoy/messages/zipball/9224dad9fdb939664beb602da1630f06cde7bd86",
+                "reference": "9224dad9fdb939664beb602da1630f06cde7bd86",
                 "shasum": ""
             },
             "require-dev": {
-                "phpspec/phpspec": "~2.0"
+                "bonesmccoy/bongo-fixture-loader": "1.*",
+                "phpspec/phpspec": "~2.0",
+                "phpunit/phpunit": "4.8.*"
             },
             "type": "library",
             "autoload": {
@@ -34,7 +36,7 @@
                 "source": "https://github.com/bonesmccoy/messages/tree/master",
                 "issues": "https://github.com/bonesmccoy/messages/issues"
             },
-            "time": "2016-03-04 09:29:12"
+            "time": "2016-03-10 11:06:16"
         },
         {
             "name": "doctrine/collections",
@@ -799,16 +801,16 @@
         },
         {
             "name": "symfony/polyfill-php54",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php54.git",
-                "reference": "74663d5a2ff3c530c1bc0571500e0feec9094054"
+                "reference": "9ba741ca01c77282ecf5796c2c1d667f03454ffb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/74663d5a2ff3c530c1bc0571500e0feec9094054",
-                "reference": "74663d5a2ff3c530c1bc0571500e0feec9094054",
+                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/9ba741ca01c77282ecf5796c2c1d667f03454ffb",
+                "reference": "9ba741ca01c77282ecf5796c2c1d667f03454ffb",
                 "shasum": ""
             },
             "require": {
@@ -853,11 +855,11 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-01-20 09:13:37"
+            "time": "2016-01-25 19:13:00"
         },
         {
             "name": "symfony/polyfill-php55",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php55.git",
@@ -1773,7 +1775,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
