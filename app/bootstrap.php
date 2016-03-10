@@ -19,6 +19,8 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => $appPath . "/logs/{$env}.log",
 ));
 
+$app->register(new Bones\SirMess\Provider\MessageServiceProvider());
 
-$app->mount("/", new Bones\SirMess\Controller\IndexController());
+
+$app->mount("/", new Bones\SirMess\Controller\IndexControllerProvider());
 
