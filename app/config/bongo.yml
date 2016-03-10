@@ -1,0 +1,11 @@
+mongo_data_store:
+  db_name: primes-test
+  host: localhost
+  port: 27017
+  username: ''
+  password: ''
+  connect: true
+
+fixtures:
+  paths:
+    - tests/Bones/SirMess/Fixtures

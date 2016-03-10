@@ -19,12 +19,15 @@ $app['env'] = $env;
 $app->register(new ConfigServiceProvider($applicationPath . "/config/config.$env.yml"));
 
 $app['root_path'] = realpath(__DIR__ . '/../');
-$app['debug'] = $app['config']['debug'];
+$app['app_path'] = $applicationPath;
+$app['config_path'] = $applicationPath . "/config";
+$app['log_path'] = $applicationPath . "/logs";
 
+$app['debug'] = $app['config']['debug'];
 
 $app->register(new SerializerServiceProvider());
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
-    'monolog.logfile' => $applicationPath . "/logs/{$env}.log",
+    'monolog.logfile' => $app['log_path'] . "/{$env}.log",
 ));
 
 $app->register(new Bones\SirMess\Provider\MessageServiceProvider());
@@ -32,3 +35,4 @@ $app->register(new Bones\SirMess\Provider\MessageServiceProvider());
 
 $app->mount("/mailbox", new Bones\SirMess\Controller\MailboxControllerProvider());
 
+return $app;

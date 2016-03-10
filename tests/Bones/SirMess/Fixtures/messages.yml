@@ -1,0 +1,2 @@
+messages:
+    - { "conversation" : 1, sender : 1,  recipient: [{ id: 2 }], title: "1 sender 1 recipient 2 title", "body": ""}

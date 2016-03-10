@@ -18,6 +18,11 @@ class BaseWebTestCase extends WebTestCase
     public function createApplication()
     {
         // app.php must return an Application instance
-        return require __DIR__.'/../../../../../web/app.php';
+        $app = require __DIR__ . '/../../../../app/bootstrap.php';
+
+        $app['debug'] = true;
+        unset($app['exception_handler']);
+
+        return $app;
     }
 }
