@@ -50,31 +50,56 @@ class MailboxControllerTest extends BaseWebTestCase
             $conversation
         );
 
-        $foundMessageAsSender = false;
-        foreach($conversation['messageList'] as $message) {
-            if (isset($message['sender']['id']) && $message['sender']['id'] == 1) {
-                $foundMessageAsSender = true;
-                break;
-            }
-        }
-
-        $this->assertTrue($foundMessageAsSender, "No message found in the conversation with person 1 as sender");
+        $this->expectSenderInConversation($conversation, 1);
 
         $this->assertArrayHasKey(
             'personList',
             $conversation
         );
 
-        $foundPersonInConversation = false;
-        foreach($conversation['personList'] as $person) {
-            if ($person['id'] == 1) {
-                $foundPersonInConversation = true;
-                break;
-            }
+        $expectedPersonInConversation = 1;
+
+        $this->expectPersonInConversation($conversation, $expectedPersonInConversation);
+
+    }
+
+
+    public function testOutboxLimited1()
+    {
+        $client = $this->createClient();
+        $client->request('GET', '/mailbox/outbox/10?offset=0&limit=2');
+        $response = $client->getResponse();
+        $this->assertTrue($client->getResponse()->isOk());
+
+        $this->assertEquals(
+            'application/json',
+            $response->headers->get('content-type')
+        );
+
+        $conversationList = json_decode($response->getContent(), true);
+
+        $this->assertCount(
+            2,
+            $conversationList
+        );
+
+        $conversation = current($conversationList);
+
+        $this->assertArrayHasKey(
+            'messageList',
+            $conversation
+        );
+
+        $expectedSender = 10;
+        $this->expectSenderInConversation($conversation, $expectedSender);
+
+        foreach($conversationList as $conversation)
+        {
+            $this->assertTrue(
+                in_array($conversation["id"], array("10", "11")),
+                $conversation["id"] . " not found in [10, 11]"
+            );
         }
-
-        $this->assertTrue($foundPersonInConversation, "No person 1 found in conversation person list");
-
     }
 
 
@@ -121,14 +146,40 @@ class MailboxControllerTest extends BaseWebTestCase
             $conversation
         );
 
+        $this->expectPersonInConversation($conversation, 2);
+    }
+
+    /**
+     * @param $conversation
+     * @param $expectedSender
+     */
+    private function expectSenderInConversation($conversation, $expectedSender)
+    {
+        $foundMessageAsSender = false;
+        foreach ($conversation['messageList'] as $message) {
+            if (isset($message['sender']['id']) && $message['sender']['id'] == $expectedSender) {
+                $foundMessageAsSender = true;
+                break;
+            }
+        }
+
+        $this->assertTrue($foundMessageAsSender, "No message found in the conversation with person $expectedSender as sender");
+    }
+
+    /**
+     * @param $conversation
+     * @param $expectedPersonInConversation
+     */
+    private function expectPersonInConversation($conversation, $expectedPersonInConversation)
+    {
         $foundPersonInConversation = false;
-        foreach($conversation['personList'] as $person) {
-            if ($person['id'] == 2) {
+        foreach ($conversation['personList'] as $person) {
+            if ($person['id'] == $expectedPersonInConversation) {
                 $foundPersonInConversation = true;
                 break;
             }
         }
 
-        $this->assertTrue($foundPersonInConversation, "No person 2 found in conversation person list");
+        $this->assertTrue($foundPersonInConversation, "No person $expectedPersonInConversation found in conversation person list");
     }
 }
