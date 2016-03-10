@@ -7,6 +7,7 @@ use Silex\Application;
 use Silex\ControllerCollection;
 use Silex\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class MailboxControllerProvider implements ControllerProviderInterface
@@ -48,18 +49,29 @@ class MailboxControllerProvider implements ControllerProviderInterface
 
     public function getInbox(Application $app, $personId)
     {
+
+        /** @var Request $request */
+        $request = $app['request'];
+        $offset = $request->query->get('offset', null);
+        $limit = $request->query->get('limit', null);
+
         $person = new Person($personId);
 
-        $inbox = $app['bones.message.mailbox']->getInbox($person);
+        $inbox = $app['bones.message.mailbox']->getInbox($person, $offset, $limit);
 
         return $this->returnJsonResponse($app, $inbox);
     }
 
     public function getOutbox(Application $app, $personId)
     {
+        /** @var Request $request */
+        $request = $app['request'];
+        $offset = $request->query->get('offset', null);
+        $limit = $request->query->get('limit', null);
+
         $person = new Person($personId);
 
-        $outbox = $app['bones.message.mailbox']->getOutbox($person);
+        $outbox = $app['bones.message.mailbox']->getOutbox($person, $offset, $limit);
 
         return $this->returnJsonResponse($app, $outbox);
     }
