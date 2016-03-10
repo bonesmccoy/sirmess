@@ -1,26 +1,38 @@
 <?php
 
-error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 
-$env = getenv('APP_ENV') ? getenv('APP_ENV') : 'dev';
+$loader = require_once __DIR__. '/../vendor/autoload.php';
+
+error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 
 use \Igorw\Silex\ConfigServiceProvider;
 use \Silex\Provider\SerializerServiceProvider;
+use Silex\Application;
 
-$appPath = $app['root_path'] . "/app";
-$app->register(
-    new ConfigServiceProvider($appPath . "/config/config.$env.yml")
-);
+
+$env = getenv('APP_ENV') ? getenv('APP_ENV') : 'dev';
+
+$app = new Application();
+$applicationPath = __DIR__;
+
+$app['env'] = $env;
+$app->register(new ConfigServiceProvider($applicationPath . "/config/config.$env.yml"));
+
+$app['root_path'] = realpath(__DIR__ . '/../');
+$app['app_path'] = $applicationPath;
+$app['config_path'] = $applicationPath . "/config";
+$app['log_path'] = $applicationPath . "/logs";
 
 $app['debug'] = $app['config']['debug'];
 
 $app->register(new SerializerServiceProvider());
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
-    'monolog.logfile' => $appPath . "/logs/{$env}.log",
+    'monolog.logfile' => $app['log_path'] . "/{$env}.log",
 ));
 
 $app->register(new Bones\SirMess\Provider\MessageServiceProvider());
 
 
-$app->mount("/", new Bones\SirMess\Controller\IndexControllerProvider());
+$app->mount("/mailbox", new Bones\SirMess\Controller\MailboxControllerProvider());
 
+return $app;
