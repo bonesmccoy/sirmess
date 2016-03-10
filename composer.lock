@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "db7974763457aae79c8d4c6d96dd13db",
+    "hash": "d0c66021f610c67ec236a9ec8ec22290",
     "content-hash": "9570fd9d3e55742be48eeeda49a54321",
     "packages": [
         {
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bonesmccoy/messages.git",
-                "reference": "9224dad9fdb939664beb602da1630f06cde7bd86"
+                "reference": "3aab7de79cb4c734950c23ce1fd775ce1cb89936"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bonesmccoy/messages/zipball/9224dad9fdb939664beb602da1630f06cde7bd86",
-                "reference": "9224dad9fdb939664beb602da1630f06cde7bd86",
+                "url": "https://api.github.com/repos/bonesmccoy/messages/zipball/3aab7de79cb4c734950c23ce1fd775ce1cb89936",
+                "reference": "3aab7de79cb4c734950c23ce1fd775ce1cb89936",
                 "shasum": ""
             },
             "require-dev": {
@@ -36,7 +36,7 @@
                 "source": "https://github.com/bonesmccoy/messages/tree/master",
                 "issues": "https://github.com/bonesmccoy/messages/issues"
             },
-            "time": "2016-03-10 11:06:16"
+            "time": "2016-03-10 13:12:17"
         },
         {
             "name": "doctrine/collections",
@@ -1154,16 +1154,16 @@
     "packages-dev": [
         {
             "name": "bonesmccoy/bongo-fixture-loader",
-            "version": "1.1",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bonesmccoy/bongo-fixture-loader.git",
-                "reference": "cc76f2af0eb038541b1a2a935e26859c4f84f18f"
+                "reference": "d49b0b04c1acc79d2ec171cd6161b6a044ee669f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bonesmccoy/bongo-fixture-loader/zipball/cc76f2af0eb038541b1a2a935e26859c4f84f18f",
-                "reference": "cc76f2af0eb038541b1a2a935e26859c4f84f18f",
+                "url": "https://api.github.com/repos/bonesmccoy/bongo-fixture-loader/zipball/d49b0b04c1acc79d2ec171cd6161b6a044ee669f",
+                "reference": "d49b0b04c1acc79d2ec171cd6161b6a044ee669f",
                 "shasum": ""
             },
             "require": {
@@ -1184,10 +1184,10 @@
                 }
             },
             "support": {
-                "source": "https://github.com/bonesmccoy/bongo-fixture-loader/tree/1.1",
+                "source": "https://github.com/bonesmccoy/bongo-fixture-loader/tree/1.1.1",
                 "issues": "https://github.com/bonesmccoy/bongo-fixture-loader/issues"
             },
-            "time": "2016-03-09 10:08:00"
+            "time": "2016-03-10 16:03:35"
         },
         {
             "name": "doctrine/instantiator",
