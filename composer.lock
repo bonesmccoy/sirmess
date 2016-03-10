@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bonesmccoy/messages.git",
-                "reference": "3aab7de79cb4c734950c23ce1fd775ce1cb89936"
+                "reference": "94c89852628bddbd8e8aab2b0f0b2ef9a2719a8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bonesmccoy/messages/zipball/3aab7de79cb4c734950c23ce1fd775ce1cb89936",
-                "reference": "3aab7de79cb4c734950c23ce1fd775ce1cb89936",
+                "url": "https://api.github.com/repos/bonesmccoy/messages/zipball/94c89852628bddbd8e8aab2b0f0b2ef9a2719a8f",
+                "reference": "94c89852628bddbd8e8aab2b0f0b2ef9a2719a8f",
                 "shasum": ""
             },
             "require-dev": {
@@ -36,7 +36,7 @@
                 "source": "https://github.com/bonesmccoy/messages/tree/master",
                 "issues": "https://github.com/bonesmccoy/messages/issues"
             },
-            "time": "2016-03-10 13:12:17"
+            "time": "2016-03-10 17:12:52"
         },
         {
             "name": "doctrine/collections",

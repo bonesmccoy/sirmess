@@ -64,7 +64,7 @@ class MailboxControllerTest extends BaseWebTestCase
     }
 
 
-    public function testOutboxLimited1()
+    public function testOutboxLimited10()
     {
         $client = $this->createClient();
         $client->request('GET', '/mailbox/outbox/10?offset=0&limit=2');
@@ -148,6 +148,46 @@ class MailboxControllerTest extends BaseWebTestCase
 
         $this->expectPersonInConversation($conversation, 2);
     }
+
+    public function testInboxLimited11()
+    {
+        $client = $this->createClient();
+        $client->request('GET', '/mailbox/inbox/11?offset=0&limit=2');
+        $response = $client->getResponse();
+        $this->assertTrue($client->getResponse()->isOk());
+
+        $this->assertEquals(
+            'application/json',
+            $response->headers->get('content-type')
+        );
+
+        $conversationList = json_decode($response->getContent(), true);
+
+        $this->assertCount(
+            2,
+            $conversationList
+        );
+
+        $conversation = current($conversationList);
+
+        $this->assertArrayHasKey(
+            'messageList',
+            $conversation
+        );
+
+        $expectedSender = 10;
+        $this->expectSenderInConversation($conversation, $expectedSender);
+
+        foreach($conversationList as $conversation)
+        {
+            $this->assertTrue(
+                in_array($conversation["id"], array("10", "11")),
+                $conversation["id"] . " not found in [10, 11]"
+            );
+        }
+    }
+
+
 
     /**
      * @param $conversation

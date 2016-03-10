@@ -4,8 +4,8 @@ messages:
 
     # test limited inbox and outbox
     - { conversation : 10, sender : 10,  recipient: [{ id: 11 }], title: "1 sender 1 recipient 2 title", body: "", date: "2016-06-01"}
-    - { conversation : 11, sender : 10,  recipient: [{ id: 12 }], title: "1 sender 1 recipient 2 title", body: "", date: "2016-05-30"}
-    - { conversation : 12, sender : 10,  recipient: [{ id: 13 }], title: "1 sender 1 recipient 2 title", body: "", date: "2016-05-29" }
-    - { conversation : 13,  sender : 10,  recipient: [{ id: 14 }], title: "1 sender 1 recipient 2 title", body: "", date: "2016-05-28"}
+    - { conversation : 11, sender : 10,  recipient: [{ id: 11 }], title: "1 sender 1 recipient 2 title", body: "", date: "2016-05-30"}
+    - { conversation : 12, sender : 10,  recipient: [{ id: 11 }], title: "1 sender 1 recipient 2 title", body: "", date: "2016-05-29" }
+    - { conversation : 13,  sender : 10,  recipient: [{ id: 11 }], title: "1 sender 1 recipient 2 title", body: "", date: "2016-05-28"}
 
 
